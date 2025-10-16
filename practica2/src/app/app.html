@@ -1,0 +1,34 @@
+<div>
+	<h2>Calculadora simple</h2>
+
+	<form (ngSubmit)="calculate(); $event.preventDefault();">
+		<div>
+			<label for="a">A:</label>
+			<input id="a" name="a" type="text" [(ngModel)]="a" />
+		</div>
+
+		<div>
+			<label for="b">B:</label>
+			<input id="b" name="b" type="text" [(ngModel)]="b" />
+		</div>
+
+		<div>
+			<label for="op">Operación:</label>
+			<select id="op" name="op" [(ngModel)]="op">
+				<option value="add">Suma (+)</option>
+				<option value="sub">Resta (-)</option>
+				<option value="mul">Multiplicación (×)</option>
+			</select>
+		</div>
+
+		<div style="margin-top:8px;">
+			<button type="button" (click)="calculate()">Calcular</button>
+			<button type="button" (click)="reset()">Reset</button>
+		</div>
+	</form>
+
+	<div style="margin-top:12px;">
+		<div *ngIf="error" style="color:darkred;">{{ error }}</div>
+		<div *ngIf="result !== null">Resultado: {{ result }}</div>
+	</div>
+</div>
