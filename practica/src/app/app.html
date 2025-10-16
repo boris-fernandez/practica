@@ -1,0 +1,40 @@
+<h1>Formulario</h1>
+
+<form [formGroup]="formulario" (ngSubmit)="guardar()">
+  <div>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" type="text" formControlName="nombre" />
+  </div>
+
+  <div>
+    <label for="apellidos">Apellidos</label>
+    <input id="apellidos" type="text" formControlName="apellidos" />
+  </div>
+
+  <div>
+    <label for="edad">Edad</label>
+    <input id="edad" type="number" formControlName="edad" />
+  </div>
+
+  <button type="submit" [disabled]="formulario.invalid">Guardar</button>
+</form>
+
+<h2>Registros</h2>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Edad</th>
+      <th>Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of datos">
+      <td>{{ d.nombre }}</td>
+      <td>{{ d.apellidos }}</td>
+      <td>{{ d.edad }}</td>
+      <td><button (click)="actualizar(d)">Actualizar</button></td>
+    </tr>
+  </tbody>
+</table>
